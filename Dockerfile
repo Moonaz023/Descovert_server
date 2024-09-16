@@ -1,5 +1,5 @@
 # Use a Maven image to build the project
-FROM maven:3.9.1-openjdk-17 AS builder
+FROM maven:3.8.3-openjdk-17 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use a smaller Java runtime image for the final container
-FROM openjdk:17-jdk-alpine
+FROM  openjdk:17.0.1-jdk-slim
 
 # Set the working directory inside the container
 WORKDIR /app
